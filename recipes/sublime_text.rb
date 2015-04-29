@@ -3,7 +3,7 @@ include_recipe "sprout-base::user_owns_usr_local"
 homebrew_cask "sublime-text3"
 
 link "/usr/local/bin/subl" do
-  to "/Applications/Sublime Text 3.app/Contents/SharedSupport/bin/subl"
+  to "#{node['sprout']['home']}/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
 end
 
 sublime_package_path = ["#{node['sprout']['home']}/Library/Application Support/Sublime Text 3", "Packages"]
