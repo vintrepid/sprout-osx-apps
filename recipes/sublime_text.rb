@@ -1,12 +1,12 @@
 include_recipe "sprout-base::user_owns_usr_local"
 
-homebrew_cask "sublime-text"
+homebrew_cask "sublime-text3"
 
 link "/usr/local/bin/subl" do
-  to "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
+  to "/Applications/Sublime Text 3.app/Contents/SharedSupport/bin/subl"
 end
 
-sublime_package_path = ["#{node['sprout']['home']}/Library/Application Support/Sublime Text 2", "Packages"]
+sublime_package_path = ["#{node['sprout']['home']}/Library/Application Support/Sublime Text 3", "Packages"]
 sublime_user_path = sublime_package_path.dup << "User"
 
 recursive_directories sublime_user_path do
@@ -27,10 +27,10 @@ template File.expand_path("Preferences.sublime-settings", File.join(sublime_user
   action :create_if_missing
 end
 
-package_dir = "#{node['sprout']['home']}/Library/Application Support/Sublime Text 2/Installed Packages"
+package_dir = "#{node['sprout']['home']}/Library/Application Support/Sublime Text 3/Installed Packages"
 filename    = "Package Control.sublime-package"
 
-recursive_directories(["#{node['sprout']['home']}/Library/Application Support", "Sublime Text 2", "Installed Packages"]) do
+recursive_directories(["#{node['sprout']['home']}/Library/Application Support", "Sublime Text 3", "Installed Packages"]) do
   owner node['sprout']['user']
 end
 
